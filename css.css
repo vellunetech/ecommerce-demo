@@ -10,12 +10,12 @@
 }
 
 body {
-    background-color: var(--light-gray);
+    background-color: var(--white);
 }
 
 /* HEADER STYLES */
 header {
-    background-color: var(--black);
+    background-color: var(--white);
     color: white;
     padding: 1rem 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -32,6 +32,7 @@ header {
 .logo {
     font-size: 3rem;
     font-weight: bold;
+    color: var(--vellune);
 }
 
 .cart-container {
@@ -51,7 +52,7 @@ header {
     top: -5px;
     right: -5px;
     background: var(--glass-dark);
-    color: white;
+    color: var(--black);
     font-size: 0.8rem;
     font-weight: bold;
     width: 18px;
