@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: var(--black);
+    background-color: var(--light-gray);
 }
 
 /* HEADER STYLES */
@@ -81,13 +81,13 @@ header {
     padding: 0.75rem;
     border: none;
     background: none;
-    color: var(--white);
+    color: var(--black);
     font-size: 1rem;
     outline: none;
 }
 
 .search-bar input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--black);
 }
 
 .search-bar button {
@@ -178,7 +178,7 @@ header {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: var(--light-gray);
+    color: var(--black);
 }
 
 .product-description {
@@ -201,7 +201,7 @@ header {
     color: var(--vellune);
     font-weight: bold;
     font-size: 1.2rem;
-    color: var(--light-gray);
+    color: var(--black);
 }
 
 .buy-button {
@@ -370,12 +370,14 @@ header {
     padding: 1.5rem;
     max-width: 400px;
     width: 90%;
-    height: 90vh;
+    max-height: 90vh;
+    overflow-y: auto;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease, transform 0.5s ease;
     color: var(--black);
 }
+
 
 .product-modal.show {
     opacity: 1;
@@ -466,4 +468,25 @@ header {
 .modal-overlay.show {
     opacity: 1;
     visibility: visible;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+    font-size: 14px;
+    color: #555;
+    margin-top: 20px;
+}
+
+p,
+.logo,
+.product-title,
+.product-description,
+.product-price,
+span,
+.user-message,
+.chat-messages,
+input {
+    font-family: Satoshi, sans-serif;
 }
