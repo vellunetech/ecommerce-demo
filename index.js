@@ -1,5 +1,6 @@
 const imageUrl = 'https://img.freepik.com/free-photo/white-box_74190-267.jpg';
-const serverUrl = 'https://github.com/vellunetech/demos-api';
+const serverUrl = 'https://ecom-chat-api-main.fly.dev/demo/ecommerce/ask';
+
 
 // Reading the data_base json file
 async function fetchProducts() {
@@ -155,22 +156,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Network response was not ok');
             }
 
+            // Parseia a resposta HTTP como JSON
             const data = await response.json();
+            console.log("Resposta do servidor:", data);
 
+            // Parseia o body (que é uma string JSON) para um objeto JavaScript
+            const body = JSON.parse(data.body); // Aqui está a chave para resolver o problema
+            console.log("Body parseado:", body);
+
+            // Retorna o objeto com as propriedades corretas
             return {
-                role: "bot",
-                text: data.text,
-                products: data.products
+                role: body.role,
+                text: body.text,
+                products: body.products || [] // Garante que products seja um array, mesmo que undefined
             };
         } catch (error) {
             console.error('Error:', error);
             return {
                 role: "bot",
-                text: "Sorry, I'm having trouble connecting to the server.",
+                text: "Desculpe, ocorreu um erro ao processar sua solicitação.",
             };
         }
     }
-
     function addMessage(message, isUser = false) {
         const messageElement = document.createElement('div');
         messageElement.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
@@ -211,13 +218,21 @@ document.addEventListener('DOMContentLoaded', () => {
             messageInput.value = '';
 
             // Get bot response
+            console.log("Pedindo resposta")
             const botResponse = await getBotResponse();
+
             // Add bot response to history
             conversationHistory.push(botResponse);
-
+            console.log("Agora vou exibir a mensagem")
             // Add bot message to UI
-            addMessage(botResponse.text);
+            console.log("A mensagem é", botResponse.text)
 
+            console.log("Resposta processada:", botResponse);
+            console.log("botResponse.text:", botResponse.text);
+
+
+            addMessage(botResponse.text);
+            console.log(botResponse.text)
             // If there are product recommendations, show them
             if (botResponse.products && botResponse.products.length > 0) {
                 addProductRecommendations(botResponse.products);
