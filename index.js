@@ -156,19 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Network response was not ok');
             }
 
-            // Parseia a resposta HTTP como JSON
             const data = await response.json();
-            console.log("Resposta do servidor:", data);
+            const body = JSON.parse(data.body);
 
-            // Parseia o body (que é uma string JSON) para um objeto JavaScript
-            const body = JSON.parse(data.body); // Aqui está a chave para resolver o problema
-            console.log("Body parseado:", body);
-
-            // Retorna o objeto com as propriedades corretas
             return {
                 role: body.role,
                 text: body.text,
-                products: body.products || [] // Garante que products seja um array, mesmo que undefined
+                products: body.products || []
             };
         } catch (error) {
             console.error('Error:', error);
@@ -218,21 +212,11 @@ document.addEventListener('DOMContentLoaded', () => {
             messageInput.value = '';
 
             // Get bot response
-            console.log("Pedindo resposta")
             const botResponse = await getBotResponse();
 
             // Add bot response to history
             conversationHistory.push(botResponse);
-            console.log("Agora vou exibir a mensagem")
-            // Add bot message to UI
-            console.log("A mensagem é", botResponse.text)
-
-            console.log("Resposta processada:", botResponse);
-            console.log("botResponse.text:", botResponse.text);
-
-
             addMessage(botResponse.text);
-            console.log(botResponse.text)
             // If there are product recommendations, show them
             if (botResponse.products && botResponse.products.length > 0) {
                 addProductRecommendations(botResponse.products);
