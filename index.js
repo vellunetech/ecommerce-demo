@@ -43,8 +43,8 @@ function showProductDetails(event, card) {
     modal.classList.add("product-modal");
 
     modal.innerHTML = `
+        <button class="close-modal" onclick="closeProductModal()">✖</button>
         <div class="modal-content">
-            <button class="close-modal" onclick="closeProductModal()">✖</button>
             <img src="${card.querySelector(".product-image").src}" class="product-image">
             <div class="product-info">
                 <h3 class="product-title">${card.querySelector(".product-title").innerText}</h3>
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addProductRecommendations(products) {
         const recommendationsHtml = products.map(product => `
-            <div class="product-card recommendation">
+            <div class="product-card recommendation" onclick="showProductDetails(event, this)">
                 <img src="${product.image}" alt="${product.title}" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">${product.title}</h3>
