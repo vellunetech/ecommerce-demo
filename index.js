@@ -1,5 +1,5 @@
 const imageUrl = 'https://img.freepik.com/free-photo/white-box_74190-267.jpg';
-const serverUrl = 'https://ecom-chat-api-main.fly.dev/demo/ecommerce/ask';
+const serverUrl = 'http://85.31.63.184:8080/demo/ecommerce/ask';
 
 
 // Reading the data_base json file
