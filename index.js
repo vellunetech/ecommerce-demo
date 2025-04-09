@@ -1,6 +1,5 @@
 const imageUrl = 'https://img.freepik.com/free-photo/white-box_74190-267.jpg';
-const serverUrl = 'http://85.31.63.184:8080/demo/ecommerce/ask';
-
+const serverUrl = 'https://api.vellune.tech/demo/ecommerce';
 
 // Reading the data_base json file
 async function fetchProducts() {
